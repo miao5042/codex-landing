@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex 中文指南 — AI 编程助手安装与使用</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#1a1a1a;background:#f9fafb;line-height:1.7;font-size:16px;letter-spacing:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ====== 导航 ====== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(16px);border-bottom:1px solid #e5e7eb}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-size:18px;font-weight:700;color:#111}
+.nav-links{display:flex;gap:32px;font-size:14px;color:#6b7280}
+.nav-links a{transition:color 0.2s}
+.nav-links a:hover{color:#111}
+
+/* ====== 区域通用 ====== */
+section{padding:80px 28px}
+.section-inner{max-width:900px;margin:0 auto}
+.section-label{font-size:12px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+h2{font-size:30px;font-weight:700;margin-bottom:20px;line-height:1.35;color:#111}
+p{color:#4b5563;margin-bottom:16px}
+p.lead{font-size:18px;color:#6b7280;margin-bottom:32px}
+
+/* ====== 按钮 ====== */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:background 0.2s,transform 0.15s,box-shadow 0.2s}
+.btn:active{transform:scale(0.97)}
+.btn-primary{background:#111;color:#fff}
+.btn-primary:hover{background:#333;box-shadow:0 4px 14px rgba(0,0,0,0.15)}
+.btn-outline{background:transparent;color:#111;border:1.5px solid #d1d5db}
+.btn-outline:hover{background:#111;color:#fff;border-color:#111}
+.btn-ghost{background:transparent;color:#6b7280;border:none;padding:8px 16px}
+.btn-ghost:hover{color:#111}
+
+/* ====== Hero ====== */
+.hero{padding:120px 28px 80px;text-align:center}
+.hero-inner{max-width:720px;margin:0 auto}
+.hero h1{font-size:48px;font-weight:800;line-height:1.15;margin-bottom:20px;color:#111;letter-spacing:-0.5px}
+.hero h1 span{background:linear-gradient(135deg,#2563eb,#0891b2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p.lead{font-size:18px;color:#6b7280;margin-bottom:40px;line-height:1.8}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ====== 功能亮点 ====== */
+.features{background:#fff;border-top:1px solid #f3f4f6;border-bottom:1px solid #f3f4f6}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:36px;margin-top:40px}
+.feature-item h3{font-size:17px;font-weight:600;margin-bottom:8px;color:#111}
+.feature-item p{font-size:14px;color:#6b7280;margin-bottom:0}
+.feature-icon{font-size:24px;margin-bottom:14px}
+
+/* ====== 安装步骤 ====== */
+.steps-list{display:flex;flex-direction:column;gap:20px;margin-top:32px}
+.step-item{display:flex;gap:18px;align-items:flex-start}
+.step-num{width:38px;height:38px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0}
+.step-content h3{font-size:16px;font-weight:600;margin-bottom:6px;color:#111}
+.step-content p{font-size:14px;color:#6b7280;margin-bottom:0}
+.code-block{background:#1e1e1e;color:#d4d4d4;padding:14px 18px;border-radius:6px;font-family:"Fira Code","Cascadia Code",Consolas,monospace;font-size:13px;overflow-x:auto;margin:10px 0;line-height:1.6}
+.tip-box{background:#f0f9ff;border-left:4px solid #2563eb;padding:14px 18px;border-radius:0 6px 6px 0;margin:12px 0;font-size:13px;color:#1e40af}
+.tip-box strong{color:#1e3a5f}
+
+/* ====== 使用教程 ====== */
+.usage-section{background:#fff;border-top:1px solid #f3f4f6;border-bottom:1px solid #f3f4f6}
+.usage-block{background:#f9fafb;border:1px solid #f3f4f6;border-radius:6px;padding:22px 24px;margin-bottom:16px;transition:border-color 0.2s}
+.usage-block:hover{border-color:#d1d5db}
+.usage-block h3{font-size:15px;font-weight:600;margin-bottom:8px;color:#111}
+.usage-block p{font-size:14px;color:#6b7280;margin-bottom:0}
+.usage-block em{color:#2563eb;font-style:normal;background:#eff6ff;padding:1px 6px;border-radius:3px}
+
+/* ====== 充值价格 ====== */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:36px}
+.price-card{background:#fff;border:1.5px solid #e5e7eb;border-radius:8px;padding:30px 28px;text-align:center;transition:border-color 0.2s,box-shadow 0.2s}
+.price-card:hover{border-color:#111;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+.price-card.featured{border-color:#2563eb;border-width:2px;position:relative}
+.price-card.featured::before{content:"推荐";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#2563eb;color:#fff;font-size:12px;font-weight:600;padding:3px 18px;border-radius:12px}
+.price-name{font-size:17px;font-weight:700;margin-bottom:6px;color:#111}
+.price-amount{font-size:38px;font-weight:800;color:#111;margin-bottom:2px}
+.price-unit{font-size:14px;color:#9ca3af;margin-bottom:6px}
+.price-desc{font-size:13px;color:#6b7280;margin-bottom:20px}
+.price-features{list-style:none;text-align:left;font-size:13px;color:#4b5563;margin-bottom:24px}
+.price-features li{padding:6px 0;border-bottom:1px solid #f3f4f6}
+.price-features li::before{content:"✓ ";color:#22c55e;font-weight:700}
+.price-card .btn{width:100%;justify-content:center}
+
+/* ====== 微信 ====== */
+.contact{text-align:center;background:#111;color:#fff}
+.contact h2{color:#fff}
+.contact p{color:#9ca3af;margin:0 auto 32px;max-width:520px}
+.wechat-card{display:inline-flex;align-items:center;gap:16px;background:#1f2937;padding:20px 40px;border-radius:8px}
+.wechat-icon{font-size:36px}
+.wechat-id{font-size:20px;font-weight:600;color:#fff}
+.wechat-hint{font-size:13px;color:#9ca3af;margin-top:4px}
+
+/* ====== Footer ====== */
+footer{text-align:center;padding:36px 28px;font-size:13px;color:#9ca3af}
+.divider{width:40px;height:2px;background:#e5e7eb;margin:60px auto 0}
+
+@media(max-width:768px){
+  .hero h1{font-size:30px}
+  .hero p.lead{font-size:16px}
+  h2{font-size:24px}
+  .nav-links{display:none}
+  section{padding:56px 16px}
+  .hero{padding:96px 16px 56px}
+  .pricing-grid,.feature-grid{grid-template-columns:1fr}
+  .price-amount{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== 导航 ====== -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Codex 中文站</div>
+    <div class="nav-links">
+      <a href="#install">安装</a>
+      <a href="#usage">使用</a>
+      <a href="#pricing">充值</a>
+      <a href="#contact">联系</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ====== Hero ====== -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>不会写代码？让 <span>Codex</span> 帮你写</h1>
+    <p class="lead">OpenAI 出的 AI 编程助手。你说中文，它出代码。做网站、写脚本、改 Bug、处理数据，全部一句话搞定。不需要懂技术，不需要会英文。</p>
+    <div class="hero-btns">
+      <a href="#install" class="btn btn-primary">📥 怎么安装</a>
+      <a href="#pricing" class="btn btn-outline">💎 会员充值</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 功能亮点 ====== -->
+<section class="features">
+  <div class="section-inner">
+    <div class="section-label">它能干什么</div>
+    <h2>说中文，它就能出代码</h2>
+    <p class="lead">不管你是学生、打工人、还是老板，只要能把需求说清楚，Codex 就帮你干完。</p>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🧠</div>
+        <h3>大白话编程</h3>
+        <p>用中文描述你要什么，自动生成代码。网站、脚本、系统，有啥想法直接说。</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔧</div>
+        <h3>自动改 Bug</h3>
+        <p>代码报错了把错误信息贴给它，它自己定位问题、修代码、跑测试验证。</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📦</div>
+        <h3>一键部署</h3>
+        <p>写完直接让它帮你部署上线，不用折腾服务器，一句话就把网站挂到网上。</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🌐</div>
+        <h3>啥项目都行</h3>
+        <p>前端、后端、数据库、自动化，全栈通吃。你只管提需求，它来落地执行。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 安装指南 ====== -->
+<section id="install">
+  <div class="section-inner">
+    <div class="section-label">安装指南</div>
+    <h2>三步装好 Codex，全程 5 分钟</h2>
+    <p class="lead">不挑电脑配置，Windows 和 Mac 都行。唯一前提：你得能科学上网。</p>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-num">0</div>
+        <div class="step-content">
+          <h3>准备工作：确保能科学上网</h3>
+          <p>Codex 用的是 OpenAI 的服务，国内网络直接连不上。你需要先准备好科学上网工具，确保能正常访问 <strong>openai.com</strong> 和 <strong>codex.openai.com</strong>。这一步搞定，后面就是一马平川。</p>
+          <div class="tip-box">⚠️ <strong>注意：</strong>科学上网是使用 Codex 的硬性前提，没有这一步后面的都白搭。请自行准备稳定的网络环境。</div>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>去 Codex 官网下载</h3>
+          <p>浏览器打开 <strong>codex.openai.com</strong>（记得开着科学上网），点首页的"Download"按钮。Windows 选 .exe 版本，Mac 选 .dmg 版本。</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>安装并登录</h3>
+          <p>双击下载的文件安装。装好打开 Codex，会提示登录。用你的 OpenAI 账号登录就行。没有账号的话在官网免费注册一个。</p>
+          <div class="tip-box">💡 注册 OpenAI 账号需要国外手机号验证，这一步也需要科学上网。搞不定的话加微信我帮你。</div>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>验证安装成功</h3>
+          <p>打开电脑终端（Windows：按 Win+R，输入 cmd 回车），输入：</p>
+          <div class="code-block">codex --version</div>
+          <p>如果显示版本号（比如 v1.x.x），说明装好了。之后每次使用记得保持科学上网开着就行。</p>
+          <p style="font-size:14px;color:#2563eb;font-weight:600;margin-top:12px">💡 不会装？加微信代安装，远程帮你搞定。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 使用教程 ====== -->
+<section id="usage" class="usage-section">
+  <div class="section-inner">
+    <div class="section-label">使用教程</div>
+    <h2>怎么让 Codex 帮你干活</h2>
+    <p class="lead">打开 Codex 你会看到一个聊天窗口。就像跟朋友聊微信一样，用中文把你要做的事情说给它。</p>
+
+    <div class="tip-box" style="margin-bottom:28px">⚠️ <strong>每次使用前，确保科学上网是开着的。</strong> Codex 的所有功能都依赖 OpenAI 服务器，网络不通就动不了。</div>
+
+    <div class="usage-block">
+      <h3>示例 1：帮我做个个人网站</h3>
+      <p>直接输入：<em>"帮我做一个个人博客网站，要有首页、文章列表、关于我三个页面，风格简洁大方。"</em> Codex 会自动建项目文件夹、写代码、还能帮你预览效果。</p>
+    </div>
+
+    <div class="usage-block">
+      <h3>示例 2：帮我处理表格数据</h3>
+      <p>把 Excel 文件拖进对话框，然后说：<em>"把这个表格里销售额超过 10 万的行挑出来，按销售额从高到低排，生成新表。"</em> Codex 读完文件、写脚本处理、输出结果。</p>
+    </div>
+
+    <div class="usage-block">
+      <h3>示例 3：帮我改 Bug</h3>
+      <p>在你的项目文件夹里打开 Codex，把报错信息贴进去：<em>"运行 npm start 报了这个错，帮我修一下。"</em> Codex 会读你的代码、定位问题、修复、再跑一遍确认。</p>
+    </div>
+
+    <div class="usage-block">
+      <h3>示例 4：帮我写自动化脚本</h3>
+      <p>比如：<em>"帮我写个脚本，每天早上 9 点自动从指定网站抓取新闻标题，存成文本文件。"</em> Codex 写脚本、配定时任务、告诉你放哪个文件夹。</p>
+    </div>
+
+    <p style="margin-top:28px;font-size:14px;color:#9ca3af;text-align:center">核心思路：<strong style="color:#111">说人话讲清楚你要什么，剩下的交给 Codex。</strong> 说不清楚也没事，它会主动问你，聊几轮就把活干完了。</p>
+  </div>
+</section>
+
+<!-- ====== 会员充值 ====== -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-label">会员充值</div>
+    <h2>按需选方案，随时可升级</h2>
+    <p class="lead">都是 GPT-5 高级模型，全部功能开放。区别只在于用量多少和响应速度。</p>
+
+    <div class="pricing-grid">
+      <div class="price-card featured">
+        <div class="price-name">个人 Plus</div>
+        <div class="price-amount">¥150</div>
+        <div class="price-unit">/ 月</div>
+        <div class="price-desc">日常开发首选，够用不贵</div>
+        <ul class="price-features">
+          <li>GPT-5 高级模型</li>
+          <li>每 5 小时用量自动重置</li>
+          <li>全功能开放，无阉割</li>
+          <li>全项目多文件编辑</li>
+          <li>日常开发完全够用</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">加微信充值</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-name">个人 Pro 5 倍</div>
+        <div class="price-amount">¥750</div>
+        <div class="price-unit">/ 月</div>
+        <div class="price-desc">5 倍用量，重度开发无压力</div>
+        <ul class="price-features">
+          <li>GPT-5 高级模型</li>
+          <li>5 倍 Plus 用量</li>
+          <li>全功能开放，无阉割</li>
+          <li>全项目多文件编辑</li>
+          <li>优先响应通道</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">加微信充值</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-name">个人 Pro 20 倍</div>
+        <div class="price-amount">¥1450</div>
+        <div class="price-unit">/ 月</div>
+        <div class="price-desc">20 倍用量，畅用无限制</div>
+        <ul class="price-features">
+          <li>GPT-5 高级模型</li>
+          <li>20 倍 Plus 用量</li>
+          <li>全功能开放，无阉割</li>
+          <li>全项目多文件编辑</li>
+          <li>极速响应通道</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">加微信充值</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 微信 ====== -->
+<section id="contact" class="contact">
+  <div class="section-inner">
+    <div class="section-label" style="color:#6b7280">联系我</div>
+    <h2>加微信，帮你搞定一切</h2>
+    <p>安装遇到问题、不知道怎么用、想充值会员——直接加我。语音教、远程帮，包教会。</p>
+    <div class="wechat-card">
+      <div class="wechat-icon">💬</div>
+      <div>
+        <div class="wechat-id">微信：tyhy2628</div>
+        <div class="wechat-hint">备注"Codex"秒通过</div>
+      </div>
+    </div>
+    <p style="margin-top:28px;font-size:13px;color:#6b7280;max-width:480px">提供 Codex 安装指导、使用教程、会员代充。搞不定科学上网也可以找我。</p>
+  </div>
+</section>
+
+<!-- ====== Footer ====== -->
+<footer>
+  <div class="divider"></div>
+  <p>© 2026 Codex 中文站 · 非官方个人站点</p>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
